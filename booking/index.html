@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Book an appointment online with Gupta Dental Care, the best dental clinic in Kushinagar. Easy, fast, and secure booking form for painless treatments.">
+    <title data-en="Book Appointment - Gupta Dental Care" data-hi="अपॉइंटमेंट बुक करें - गुप्ता डेंटल केयर">Book Appointment - Gupta Dental Care</title>
+    <link rel="canonical" href="https://bitcodeashishcloud.github.io/Gupta-Dental-Care/booking/">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="../" style="max-width: 75%;">
+                <img src="../logo.png" alt="Gupta Dental Care Clinic Logo" style="height: 40px; width: auto; object-fit: contain;">
+                <span class="ms-2 fw-bold text-primary text-truncate" style="font-size: 1.2rem;">Gupta Dental Care</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../" data-en="Home" data-hi="होम">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../symptoms/" data-en="Symptom Checker" data-hi="लक्षण जांचकर्ता">Symptom Checker</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../gallery/" data-en="Gallery" data-hi="गैलरी">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../#testimonials" data-en="Testimonials" data-hi="समीक्षा">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../#faq" data-en="FAQ" data-hi="सामान्य प्रश्न">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../#contact" data-en="Contact" data-hi="संपर्क">Contact</a>
+                    </li>
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0 mb-2 mb-lg-0">
+                        <a class="btn btn-primary nav-cta-btn px-3 py-2 fw-bold text-white active" href="../booking/" data-en="Book Appointment" data-hi="अपॉइंटमेंट बुक करें" style="border-radius: 20px; font-size: 0.9rem; text-decoration: none;">Book Appointment</a>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <button class="btn btn-outline-primary btn-sm language-toggle" onclick="toggleLanguage()">
+                            <i class="fas fa-language"></i> <span id="lang-text">हिंदी</span>
+                        </button>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <button class="btn btn-outline-secondary btn-sm" id="bg-toggle" onclick="toggleBackgroundMode()">
+                            <i class="fas fa-moon"></i> <span id="bg-mode-text">Dark Mode</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Booking Page Content -->
+    <section class="booking-section">
+        <div class="container" data-aos="fade-up">
+            <div class="row g-5">
+                <!-- Booking Form Column -->
+                <div class="col-lg-7">
+                    <div class="booking-card">
+                        <h2 class="booking-title" data-en="Book an Appointment" data-hi="अपॉइंटमेंट बुक करें">Book an Appointment</h2>
+                        <p class="booking-subtitle" data-en="Follow our simple 3-step process to request your appointment." data-hi="अपॉइंटमेंट का अनुरोध करने के लिए हमारी सरल 3-चरण प्रक्रिया का पालन करें।">Follow our simple 3-step process to request your appointment.</p>
+                        
+                        <!-- Step Progress Indicator -->
+                        <div class="step-progress-bar mb-5">
+                            <div class="progress-step active" id="step-ind-1">
+                                <div class="progress-step-icon" id="step-icon-1">1</div>
+                                <div class="progress-step-label" data-en="Service" data-hi="सेवा">Service</div>
+                            </div>
+                            <div class="progress-line" id="step-line-1"></div>
+                            <div class="progress-step" id="step-ind-2">
+                                <div class="progress-step-icon" id="step-icon-2">2</div>
+                                <div class="progress-step-label" data-en="Schedule" data-hi="समय">Schedule</div>
+                            </div>
+                            <div class="progress-line" id="step-line-2"></div>
+                            <div class="progress-step" id="step-ind-3">
+                                <div class="progress-step-icon" id="step-icon-3">3</div>
+                                <div class="progress-step-label" data-en="Details" data-hi="विवरण">Details</div>
+                            </div>
+                        </div>
+
+                        <!-- Form Container -->
+                        <div id="bookingFormWrapper">
+                            <form id="appointmentForm" class="booking-form" novalidate>
+                                <!-- Web3Forms Configuration -->
+                                <input type="hidden" name="access_key" value="6b7ff626-62de-441e-a3a8-0d06f0df0e1a">
+                                <input type="hidden" name="subject" value="New Appointment Request - Gupta Dental Care">
+                                <input type="hidden" name="from_name" value="Gupta Dental Care Online Booking">
+                                <input type="hidden" name="time" id="appointment-time-hidden" required>
+                                
+                                <!-- Hidden Native dropdown select to map value for form submission -->
+                                <select class="d-none" id="treatment" name="treatment" required>
+                                    <option value="" disabled selected>-- Select --</option>
+                                    <option value="General Dentistry">General Dentistry</option>
+                                    <option value="Root Canal Treatment">Root Canal Treatment</option>
+                                    <option value="Dental Implants">Dental Implants</option>
+                                    <option value="Teeth Whitening">Teeth Whitening</option>
+                                    <option value="Crowns & Bridges">Crowns & Bridges</option>
+                                    <option value="Pediatric Dentistry">Pediatric Dentistry</option>
+                                    <option value="Orthodontics">Orthodontics (Braces)</option>
+                                    <option value="Gum Treatment">Gum Treatment</option>
+                                    <option value="Tooth Extraction">Tooth Extraction</option>
+                                    <option value="Other / Consultation">Other / Consultation</option>
+                                </select>
+
+                                <!-- STEP 1 PANEL: Choose Service -->
+                                <div class="wizard-step-panel active" id="step-panel-1">
+                                    <h5 class="fw-bold mb-3" data-en="Select Dental Treatment" data-hi="दंत चिकित्सा उपचार चुनें">Select Dental Treatment</h5>
+                                    
+                                    <div class="treatment-grid-container mb-4">
+                                        <div class="row g-3">
+                                            <!-- General Dentistry -->
+                                            <div class="col-md-4 col-6">
+                                                <div class="treatment-card-option" data-val="General Dentistry">
+                                                    <div class="treatment-option-icon"><i class="fas fa-tooth"></i></div>
+                                                    <div class="treatment-option-title" data-en="General Dentistry" data-hi="सामान्य उपचार">General Dentistry</div>
+                                                </div>
+                                            </div>
+                                            <!-- RCT -->
+                                            <div class="col-md-4 col-6">
+                                                <div class="treatment-card-option" data-val="Root Canal Treatment">
+                                                    <div class="treatment-option-icon"><i class="fas fa-syringe"></i></div>
+                                                    <div class="treatment-option-title" data-en="Root Canal (RCT)" data-hi="रूट कैनाल (RCT)">Root Canal (RCT)</div>
+                                                </div>
+                                            </div>
+                                            <!-- Implants -->
+                                            <div class="col-md-4 col-6">
+                                                <div class="treatment-card-option" data-val="Dental Implants">
+                                                    <div class="treatment-option-icon"><i class="fas fa-teeth"></i></div>
+                                                    <div class="treatment-option-title" data-en="Dental Implants" data-hi="डेंटल इम्प्लांट">Dental Implants</div>
+                                                </div>
+                                            </div>
+                                            <!-- Whitening -->
+                                            <div class="col-md-4 col-6">
+                                                <div class="treatment-card-option" data-val="Teeth Whitening">
+                                                    <div class="treatment-option-icon"><i class="fas fa-smile-beam"></i></div>
+                                                    <div class="treatment-option-title" data-en="Teeth Whitening" data-hi="दांत चमकाना">Teeth Whitening</div>
+                                                </div>
+                                            </div>
+                                            <!-- Crowns & Bridges -->
+                                            <div class="col-md-4 col-6">
+                                                <div class="treatment-card-option" data-val="Crowns & Bridges">
+                                                    <div class="treatment-option-icon"><i class="fas fa-crown"></i></div>
+                                                    <div class="treatment-option-title" data-en="Crowns & Bridges" data-hi="क्राउन और ब्रिज">Crowns & Bridges</div>
+                                                </div>
+                                            </div>
+                                            <!-- Pediatric -->
+                                            <div class="col-md-4 col-6">
+                                                <div class="treatment-card-option" data-val="Pediatric Dentistry">
+                                                    <div class="treatment-option-icon"><i class="fas fa-child"></i></div>
+                                                    <div class="treatment-option-title" data-en="Pediatric Care" data-hi="बच्चों का उपचार">Pediatric Care</div>
+                                                </div>
+                                            </div>
+                                            <!-- Braces -->
+                                            <div class="col-md-4 col-6">
+                                                <div class="treatment-card-option" data-val="Orthodontics">
+                                                    <div class="treatment-option-icon"><i class="fas fa-teeth-open"></i></div>
+                                                    <div class="treatment-option-title" data-en="Braces (Orthodontics)" data-hi="ब्रेसिज़ उपचार">Braces (Orthodontics)</div>
+                                                </div>
+                                            </div>
+                                            <!-- Gum Care -->
+                                            <div class="col-md-4 col-6">
+                                                <div class="treatment-card-option" data-val="Gum Treatment">
+                                                    <div class="treatment-option-icon"><i class="fas fa-hand-holding-medical"></i></div>
+                                                    <div class="treatment-option-title" data-en="Gum Care" data-hi="मसूड़ों का इलाज">Gum Care</div>
+                                                </div>
+                                            </div>
+                                            <!-- Extraction -->
+                                            <div class="col-md-4 col-6">
+                                                <div class="treatment-card-option" data-val="Tooth Extraction">
+                                                    <div class="treatment-option-icon"><i class="fas fa-circle-minus"></i></div>
+                                                    <div class="treatment-option-title" data-en="Tooth Extraction" data-hi="दांत निकालना">Tooth Extraction</div>
+                                                </div>
+                                            </div>
+                                            <!-- Other / Consultation -->
+                                            <div class="col-md-4 col-6">
+                                                <div class="treatment-card-option" data-val="Other / Consultation">
+                                                    <div class="treatment-option-icon"><i class="far fa-question-circle"></i></div>
+                                                    <div class="treatment-option-title" data-en="Other Option" data-hi="अन्य विकल्प">Other Option</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="invalid-feedback d-none" id="treatment-validation-msg" data-en="Please select a treatment service." data-hi="कृपया एक उपचार सेवा चुनें।">Please select a treatment service.</div>
+                                    
+                                    <div class="wizard-nav-btns mt-4 d-flex justify-content-end">
+                                        <button type="button" class="btn btn-primary next-step-btn px-4" data-next="2">
+                                            <span data-en="Choose Date & Time" data-hi="तारीख और समय चुनें">Choose Date & Time</span> <i class="fas fa-arrow-right ms-2"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- STEP 2 PANEL: Choose Date & Time -->
+                                <div class="wizard-step-panel" id="step-panel-2">
+                                    <h5 class="fw-bold mb-3" data-en="Select Date & Time Slot" data-hi="तारीख और समय स्लॉट चुनें">Select Date & Time Slot</h5>
+                                    
+                                    <div class="mb-4 date-picker-wrapper">
+                                        <div class="d-flex align-items-center mb-2">
+                                            <label for="appointment-date" class="form-label mb-0" data-en="Preferred Date" data-hi="पसंदीदा तारीख">Preferred Date</label>
+                                            <span id="selected-day-badge" class="badge ms-2 d-none"></span>
+                                        </div>
+                                        <div class="input-group-custom">
+                                            <span class="input-icon-left"><i class="far fa-calendar-alt"></i></span>
+                                            <input type="date" class="form-control date-input-field" id="appointment-date" name="date" required>
+                                        </div>
+                                        <input type="hidden" name="day_of_week" id="appointment-day-hidden">
+                                        <div class="invalid-feedback" id="date-validation-msg" data-en="Please select a valid date." data-hi="कृपया एक वैध तारीख चुनें।">Please select a valid date.</div>
+                                        
+                                        <!-- Dynamic Quick Dates Pills Section -->
+                                        <div class="quick-dates-container mt-3">
+                                            <div class="quick-dates-label" data-en="Or choose an upcoming date quickly:" data-hi="या जल्दी से आने वाली तारीख चुनें:">Or choose an upcoming date quickly:</div>
+                                            <div class="quick-dates-grid" id="quick-dates-grid">
+                                                <!-- Dynamic Date Pills populated by Javascript -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <!-- Time Slot Alert Message -->
+                                        <div id="time-slot-alert" class="time-slot-alert">
+                                            <i class="fas fa-exclamation-circle"></i>
+                                            <span id="time-slot-alert-msg" data-en="Please select your preferred date before selecting a time slot." data-hi="समय स्लॉट चुनने से पहले कृपया अपनी पसंदीदा तारीख चुनें।">Please select your preferred date before selecting a time slot.</span>
+                                        </div>
+
+                                        <label class="form-label mb-2" data-en="Select Available Time Slot" data-hi="उपलब्ध समय स्लॉट चुनें">Select Available Time Slot</label>
+                                        
+                                        <!-- Morning Slots -->
+                                        <div class="time-slots-container">
+                                            <div class="time-slot-section-title" data-en="Morning Slots (11:00 AM - 2:00 PM)" data-hi="सुबह के स्लॉट (11:00 AM - 2:00 PM)">Morning Slots (11:00 AM - 2:00 PM)</div>
+                                            <div class="time-slot-grid">
+                                                <div class="time-slot-btn" data-time="11:00 AM">11:00 AM</div>
+                                                <div class="time-slot-btn" data-time="12:00 PM">12:00 PM</div>
+                                                <div class="time-slot-btn" data-time="01:00 PM">01:00 PM</div>
+                                                <div class="time-slot-btn" data-time="02:00 PM">02:00 PM</div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Evening Slots -->
+                                        <div class="time-slots-container">
+                                            <div class="time-slot-section-title" data-en="Evening Slots (3:00 PM - 6:00 PM)" data-hi="शाम के स्लॉट (3:00 PM - 6:00 PM)">Evening Slots (3:00 PM - 6:00 PM)</div>
+                                            <div class="time-slot-grid">
+                                                <div class="time-slot-btn" data-time="03:00 PM">03:00 PM</div>
+                                                <div class="time-slot-btn" data-time="04:00 PM">04:00 PM</div>
+                                                <div class="time-slot-btn" data-time="05:00 PM">05:00 PM</div>
+                                                <div class="time-slot-btn" data-time="06:00 PM">06:00 PM</div>
+                                            </div>
+                                        </div>
+                                        <div class="invalid-feedback d-none" id="time-slot-validation-msg" data-en="Please choose an appointment time slot." data-hi="कृपया अपॉइंटमेंट के लिए एक समय स्लॉट चुनें।">Please choose an appointment time slot.</div>
+                                    </div>
+
+                                    <div class="wizard-nav-btns mt-4 d-flex justify-content-between">
+                                        <button type="button" class="btn btn-outline-secondary back-step-btn" data-back="1">
+                                            <i class="fas fa-arrow-left me-2"></i> <span data-en="Back" data-hi="पीछे">Back</span>
+                                        </button>
+                                        <button type="button" class="btn btn-primary next-step-btn px-4" data-next="3">
+                                            <span data-en="Enter Personal Details" data-hi="व्यक्तिगत जानकारी भरें">Enter Personal Details</span> <i class="fas fa-arrow-right ms-2"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- STEP 3 PANEL: Contact Info -->
+                                <div class="wizard-step-panel" id="step-panel-3">
+                                    <h5 class="fw-bold mb-3" data-en="Your Contact Information" data-hi="आपकी संपर्क जानकारी">Your Contact Information</h5>
+                                    
+                                    <div class="mb-3">
+                                        <label for="patient-name" class="form-label" data-en="Full Name" data-hi="पूरा नाम">Full Name</label>
+                                        <input type="text" class="form-control" id="patient-name" name="name" placeholder="John Doe" required>
+                                        <div class="invalid-feedback" data-en="Please enter your full name." data-hi="कृपया अपना पूरा नाम दर्ज करें।">Please enter your full name.</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="patient-phone" class="form-label" data-en="Phone Number" data-hi="फ़ोन नंबर">Phone Number</label>
+                                            <input type="tel" class="form-control" id="patient-phone" name="phone" placeholder="+91 99848 47807" required>
+                                            <div class="invalid-feedback" data-en="Please enter a valid phone number." data-hi="कृपया एक वैध फ़ोन नंबर दर्ज करें।">Please enter a valid phone number.</div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="patient-email" class="form-label" data-en="Email Address" data-hi="ईमेल पता">Email Address</label>
+                                            <input type="email" class="form-control" id="patient-email" name="email" placeholder="example@mail.com" required>
+                                            <div class="invalid-feedback" data-en="Please enter a valid email address." data-hi="कृपया एक वैध ईमेल पता दर्ज करें।">Please enter a valid email address.</div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="symptoms" class="form-label" data-en="Symptoms / Description (Optional)" data-hi="लक्षण / विवरण (वैकल्पिक)">Symptoms / Description (Optional)</label>
+                                        <textarea class="form-control" id="symptoms" name="message" rows="3" placeholder="Describe any dental problems or pain..."></textarea>
+                                    </div>
+
+                                    <div class="wizard-nav-btns mt-4 d-flex justify-content-between">
+                                        <button type="button" class="btn btn-outline-secondary back-step-btn" data-back="2">
+                                            <i class="fas fa-arrow-left me-2"></i> <span data-en="Back" data-hi="पीछे">Back</span>
+                                        </button>
+                                        <button type="submit" class="btn btn-primary px-4" id="submitBtn">
+                                            <i class="fas fa-check-circle me-2"></i>
+                                            <span id="submitBtnText" data-en="Confirm Appointment" data-hi="अपॉइंटमेंट की पुष्टि करें">Confirm Appointment</span>
+                                        </button>
+                                    </div>
+                                    <p class="booking-trust-note mt-3 mb-0" data-en="Your information is secure and only used to confirm your appointment. We never share your data." data-hi="आपकी जानकारी सुरक्षित है और केवल आपके अपॉइंटमेंट की पुष्टि के लिए उपयोग की जाती है। हम आपका डेटा कभी साझा नहीं करते।"><i class="fas fa-lock me-2 text-primary"></i> Your information is secure and only used to confirm your appointment. We never share your data.</p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clinic Info Sidebar Column -->
+                <div class="col-lg-5">
+                    <div class="info-sidebar-card">
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <img src="../Dr. A Gupta.jpeg" alt="Dr. A Gupta" class="booking-trust-photo">
+                            <div>
+                                <h6 class="fw-bold mb-1">Dr. A Gupta</h6>
+                                <p class="small text-muted mb-0" data-en="BDS | RCT Specialist | 6+ Years" data-hi="बीडीएस | आरसीटी विशेषज्ञ | 6+ वर्ष">BDS | RCT Specialist | 6+ Years</p>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="status-badge open">
+                                <i class="fas fa-circle"></i>
+                                <span data-en="Open Today" data-hi="आज खुला है">Open Today</span>
+                            </span>
+                            <span class="badge bg-primary-subtle text-primary" data-en="Reply within 2 hours" data-hi="2 घंटे में जवाब">Reply within 2 hours</span>
+                        </div>
+                        
+                        <h3 class="sidebar-title" data-en="Why Gupta Dental Care?" data-hi="गुप्ता डेंटल केयर क्यों?">Why Gupta Dental Care?</h3>
+                        <p class="text-muted small" data-en="Providing painless dental care with modern technology in Kasia Bazaar, Kushinagar." data-hi="कस्या बाजार, कुशीनगर में आधुनिक तकनीक के साथ दर्द रहित दंत चिकित्सा देखभाल प्रदान करना।">
+                            Providing painless dental care with modern technology in Kasia Bazaar, Kushinagar.
+                        </p>
+                        
+                        <hr class="my-4 var-border">
+                        
+                        <!-- Working Hours -->
+                        <h5 class="fw-bold mb-3" data-en="Clinic Working Hours" data-hi="क्लिनिक के काम करने के घंटे">Clinic Working Hours</h5>
+                        <div class="schedule-list mb-4">
+                            <div class="schedule-list-item">
+                                <span class="schedule-day" data-en="Monday - Tuesday" data-hi="सोमवार - मंगलवार">Monday - Tuesday</span>
+                                <span class="schedule-time">11:00 AM - 06:00 PM</span>
+                            </div>
+                            <div class="schedule-list-item">
+                                <span class="schedule-day" data-en="Wednesday" data-hi="बुधवार">Wednesday</span>
+                                <span class="schedule-time text-danger fw-bold" data-en="Closed" data-hi="बंद">Closed</span>
+                            </div>
+                            <div class="schedule-list-item">
+                                <span class="schedule-day" data-en="Thursday - Sunday" data-hi="गुरुवार - रविवार">Thursday - Sunday</span>
+                                <span class="schedule-time">11:00 AM - 06:00 PM</span>
+                            </div>
+                        </div>
+
+                        <hr class="my-4 var-border">
+
+                        <!-- Core Contact Details -->
+                        <div class="sidebar-info-item">
+                            <div class="sidebar-info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="sidebar-info-text">
+                                <h6 data-en="Clinic Address" data-hi="क्लिनिक का पता">Clinic Address</h6>
+                                <p data-en="Gandhi Chauk, Kasia Bazaar, Kushinagar, UP - 274402" data-hi="गांधी चौक, कस्या बाजार, कुशीनगर, यूपी - 274402">Gandhi Chauk, Kasia Bazaar, Kushinagar, UP - 274402</p>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-info-item">
+                            <div class="sidebar-info-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="sidebar-info-text">
+                                <h6 data-en="Contact Number" data-hi="संपर्क नंबर">Contact Number</h6>
+                                <p>+91 99848 47807</p>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-info-item">
+                            <div class="sidebar-info-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div class="sidebar-info-text">
+                                <h6 data-en="Trusted Dentistry" data-hi="विश्वसनीय दंत चिकित्सा">Trusted Dentistry</h6>
+                                <p data-en="6+ Years of Experience | 6000+ Happy Patients" data-hi="6+ वर्षों का अनुभव | 6000+ खुश मरीज">6+ Years of Experience | 6000+ Happy Patients</p>
+                            </div>
+                        </div>
+
+                        <div class="booking-trust-actions d-grid gap-2 mt-4">
+                            <a href="tel:+919984847807" class="btn btn-outline-primary"><i class="fas fa-phone-alt me-2"></i> <span data-en="Call Clinic Directly" data-hi="क्लिनिक को सीधे कॉल करें">Call Clinic Directly</span></a>
+                            <a href="https://wa.me/919984847807?text=Hello%20Dr.%20A%20Gupta,%20I%20would%20like%20to%20book%20an%20appointment" target="_blank" rel="noopener" class="btn btn-success" style="background:#25D366;border-color:#25D366;"><i class="fab fa-whatsapp me-2"></i> <span data-en="Book via WhatsApp" data-hi="व्हाट्सएप से बुक करें">Book via WhatsApp</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h5>
+                        <img src="../logo.png" alt="Gupta Dental Care Clinic Logo"
+                            style="height: 40px; width: auto; margin-right: 10px; vertical-align: middle;"> Gupta Dental Care
+                    </h5>
+                    <p class="small" data-en="Your trusted partner for complete dental health in Kushinagar"
+                        data-hi="कुशीनगर में संपूर्ण दंत स्वास्थ्य के लिए आपका विश्वसनीय साथी">
+                        Your trusted partner for complete dental health in Kushinagar
+                    </p>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h6 data-en="Quick Links" data-hi="त्वरित लिंक">Quick Links</h6>
+                    <ul class="list-unstyled small">
+                        <li><a href="../#home" class="text-white-50 text-decoration-none" data-en="Home"
+                                data-hi="होम">Home</a></li>
+                        <li><a href="../#about" class="text-white-50 text-decoration-none" data-en="About"
+                                data-hi="डॉक्टर के बारे में">About</a></li>
+                        <li><a href="../#services" class="text-white-50 text-decoration-none" data-en="Services"
+                                data-hi="सेवाएं">Services</a></li>
+                        <li><a href="../#contact" class="text-white-50 text-decoration-none" data-en="Contact"
+                                data-hi="संपर्क">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6 data-en="Connect With Us" data-hi="हमसे जुड़ें">Connect With Us</h6>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/people/Gupta-Dental-Care/100083342202190/" target="_blank"
+                            rel="noopener" class="text-white me-3" title="Facebook"><i class="fab fa-facebook fa-lg"
+                                aria-hidden="true"></i><span class="visually-hidden">Facebook</span></a>
+                        <a href="https://www.instagram.com/guptadentalcare/" target="_blank" rel="noopener"
+                            class="text-white me-3" title="Instagram"><i class="fab fa-instagram fa-lg"
+                                aria-hidden="true"></i><span class="visually-hidden">Instagram</span></a>
+                        <a href="https://wa.me/919984847807?text=Hello%20Dr.%20A%20Gupta,%20I%20would%20like%20to%20book%20an%20appointment"
+                            target="_blank" rel="noopener" class="text-white" title="WhatsApp"><i
+                                class="fab fa-whatsapp fa-lg" aria-hidden="true"></i><span
+                                class="visually-hidden">WhatsApp</span></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="bg-white my-3">
+            <div class="text-center small">
+                <p class="mb-0">&copy; 2026 Gupta Dental Care. <span data-en="All rights reserved."
+                        data-hi="सर्वाधिकार सुरक्षित।">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Mobile Action Bar -->
+    <div class="sticky-mobile-bar d-lg-none">
+        <a href="tel:+919984847807" class="sticky-bar-btn sticky-bar-call"><i class="fas fa-phone-alt"></i> Call</a>
+        <a href="https://wa.me/919984847807?text=Hello%20Dr.%20A%20Gupta,%20I%20would%20like%20to%20book%20an%20appointment" target="_blank" rel="noopener" class="sticky-bar-btn sticky-bar-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="../booking/" class="sticky-bar-btn sticky-bar-book"><i class="fas fa-calendar-alt"></i> Book</a>
+    </div>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-buttons">
+        <a href="tel:+919984847807" class="floating-btn call-btn" title="Call Now">
+            <i class="fas fa-phone-alt"></i>
+        </a>
+        <a href="https://wa.me/919984847807?text=Hello%20Dr.%20A%20Gupta,%20I%20would%20like%20to%20book%20an%20appointment"
+            target="_blank" rel="noopener" class="floating-btn whatsapp-btn" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Custom JS -->
+    <script src="../script.js"></script>
+
+    <!-- Page Specific Script -->
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Prevent choosing past dates in Date Picker
+            const dateInput = document.getElementById('appointment-date');
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            dateInput.min = `${year}-${month}-${day}`;
+
+            // --- Next-Gen Datepicker Helper Functions ---
+            const selectedDayBadge = document.getElementById('selected-day-badge');
+            const hiddenDayInput = document.getElementById('appointment-day-hidden');
+            const timeSlotAlert = document.getElementById('time-slot-alert');
+            const dateFeedback = document.getElementById('date-validation-msg');
+
+            // Format/parsing in local timezone (avoids UTC day-shift bugs in India)
+            function formatLocalDate(d) {
+                const y = d.getFullYear();
+                const m = String(d.getMonth() + 1).padStart(2, '0');
+                const day = String(d.getDate()).padStart(2, '0');
+                return `${y}-${m}-${day}`;
+            }
+
+            function parseLocalDate(dateStr) {
+                const [y, m, d] = dateStr.split('-').map(Number);
+                return new Date(y, m - 1, d);
+            }
+
+            function startOfDay(d) {
+                return new Date(d.getFullYear(), d.getMonth(), d.getDate());
+            }
+
+            // Handle date selection: Day identification, Wednesday blocker, pill selection sync
+            function handleDateSelection(selectedDateStr) {
+                if (!selectedDateStr) {
+                    selectedDayBadge.classList.add('d-none');
+                    hiddenDayInput.value = '';
+                    return true;
+                }
+
+                const selDate = parseLocalDate(selectedDateStr);
+                const dayIndex = selDate.getDay();
+
+                // Closed on Wednesday (3)
+                if (dayIndex === 3) {
+                    // Closed on Wednesday! Block and warn
+                    dateInput.value = '';
+                    dateInput.classList.add('is-invalid');
+                    
+                    // Show custom message
+                    dateFeedback.style.display = 'block';
+                    dateFeedback.textContent = currentLanguage === 'en' 
+                        ? 'Gupta Dental Care is closed on Wednesdays. Please select another date.' 
+                        : 'गुप्ता डेंटल केयर बुधवार को बंद रहता है। कृपया कोई अन्य तारीख चुनें।';
+                    dateFeedback.setAttribute('data-en', 'Gupta Dental Care is closed on Wednesdays. Please select another date.');
+                    dateFeedback.setAttribute('data-hi', 'गुप्ता डेंटल केयर बुधवार को बंद रहता है। कृपया कोई अन्य तारीख चुनें।');
+
+                    // Reset badges/inputs
+                    selectedDayBadge.classList.add('d-none');
+                    hiddenDayInput.value = '';
+                    
+                    // Clear selected pills
+                    document.querySelectorAll('.quick-date-pill').forEach(p => p.classList.remove('selected'));
+
+                    // Shake the date picker wrapper
+                    const dateWrapper = document.querySelector('.date-picker-wrapper');
+                    if (dateWrapper) {
+                        dateWrapper.classList.add('shake');
+                        setTimeout(() => dateWrapper.classList.remove('shake'), 500);
+                    }
+                    return false;
+                }
+
+                // Valid day - clear errors and calculate labels
+                dateInput.classList.remove('is-invalid');
+                dateFeedback.style.display = 'none';
+                if (timeSlotAlert) timeSlotAlert.style.display = 'none';
+
+                const daysEn = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                const daysHi = ['रविवार', 'सोमवार', 'मंगलवार', 'बुधवार', 'गुरुवार', 'शुक्रवार', 'शनिवार'];
+
+                const dayEn = daysEn[dayIndex];
+                const dayHi = daysHi[dayIndex];
+
+                // Set hidden day field
+                hiddenDayInput.value = dayEn;
+
+                // Show day badge
+                selectedDayBadge.classList.remove('d-none');
+                selectedDayBadge.textContent = currentLanguage === 'en' ? dayEn : dayHi;
+                selectedDayBadge.setAttribute('data-en', dayEn);
+                selectedDayBadge.setAttribute('data-hi', dayHi);
+
+                // Highlight corresponding quick date pill if it matches
+                document.querySelectorAll('.quick-date-pill').forEach(pill => {
+                    if (pill.getAttribute('data-date') === selectedDateStr) {
+                        pill.classList.add('selected');
+                    } else {
+                        pill.classList.remove('selected');
+                    }
+                });
+
+                return true;
+            }
+
+            // Generate next 5 active clinic working dates (skipping Wednesdays)
+            function populateQuickDates() {
+                const quickDatesGrid = document.getElementById('quick-dates-grid');
+                if (!quickDatesGrid) return;
+                
+                quickDatesGrid.innerHTML = '';
+                
+                const daysOfWeekEn = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+                const daysOfWeekHi = ['रवि', 'सोम', 'मंगल', 'बुध', 'गुरु', 'शुक्र', 'शनि'];
+                const monthsEn = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                const monthsHi = ['जनवरी', 'फरवरी', 'मार्च', 'अप्रैल', 'मई', 'जून', 'जुलाई', 'अगस्त', 'सितंबर', 'अक्टूबर', 'नवंबर', 'दिसंबर'];
+                
+                const today = new Date();
+                const todayStart = startOfDay(today);
+                let datesCount = 0;
+                let dayOffset = 0;
+                
+                while (datesCount < 5 && dayOffset < 15) {
+                    const nextDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + dayOffset);
+                    const dayIndex = nextDate.getDay();
+                    
+                    if (dayIndex !== 3) { // Skip Wednesdays
+                        const dateStr = formatLocalDate(nextDate);
+                        const dayNum = nextDate.getDate();
+                        const monthIndex = nextDate.getMonth();
+                        const diffDays = Math.round((startOfDay(nextDate) - todayStart) / (1000 * 60 * 60 * 24));
+                        
+                        let dayLabelEn = daysOfWeekEn[dayIndex];
+                        let dateLabelEn = `${dayNum} ${monthsEn[monthIndex]}`;
+                        if (diffDays === 0) dayLabelEn = 'Today';
+                        else if (diffDays === 1) dayLabelEn = 'Tomorrow';
+                        
+                        let dayLabelHi = daysOfWeekHi[dayIndex];
+                        let dateLabelHi = `${dayNum} ${monthsHi[monthIndex]}`;
+                        if (diffDays === 0) dayLabelHi = 'आज';
+                        else if (diffDays === 1) dayLabelHi = 'कल';
+                        
+                        const pill = document.createElement('div');
+                        pill.className = 'quick-date-pill';
+                        pill.setAttribute('data-date', dateStr);
+                        pill.innerHTML = `
+                            <span class="quick-date-day" data-en="${dayLabelEn}" data-hi="${dayLabelHi}">${currentLanguage === 'en' ? dayLabelEn : dayLabelHi}</span>
+                            <span class="quick-date-num" data-en="${dateLabelEn}" data-hi="${dateLabelHi}">${currentLanguage === 'en' ? dateLabelEn : dateLabelHi}</span>
+                        `;
+                        
+                        pill.addEventListener('click', function() {
+                            dateInput.value = dateStr;
+                            handleDateSelection(dateStr);
+                        });
+                        
+                        quickDatesGrid.appendChild(pill);
+                        datesCount++;
+                    }
+                    dayOffset++;
+                }
+            }
+
+            // Populate on load
+            populateQuickDates();
+
+            // Setup date selection listeners
+            dateInput.addEventListener('change', function() {
+                handleDateSelection(this.value);
+            });
+
+            // Listen to language change to trigger custom pill text adjustments if grid exists
+            window.addEventListener('load', function() {
+                // Intercept core toggleLanguage if needed, otherwise our attributes trigger it
+                populateQuickDates();
+            });
+
+            // Multi-step Wizard Navigation Logic
+            const nextBtns = document.querySelectorAll('.next-step-btn');
+            const backBtns = document.querySelectorAll('.back-step-btn');
+            const stepPanels = document.querySelectorAll('.wizard-step-panel');
+            const hiddenTreatmentSelect = document.getElementById('treatment');
+            const hiddenTimeInput = document.getElementById('appointment-time-hidden');
+            
+            // Step validation indicators
+            const treatmentFeedback = document.getElementById('treatment-validation-msg');
+            const timeSlotFeedback = document.getElementById('time-slot-validation-msg');
+
+            // Navigation handler
+            function goToStep(stepNum) {
+                // Remove active classes
+                stepPanels.forEach(p => p.classList.remove('active'));
+                
+                // Show requested step
+                document.getElementById(`step-panel-${stepNum}`).classList.add('active');
+
+                // Update progress indicator
+                updateProgressIndicators(stepNum);
+                
+                // Scroll to top of card on step change
+                const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                window.scrollTo({
+                    top: document.querySelector('.booking-card').offsetTop - navbarHeight - 20,
+                    behavior: 'smooth'
+                });
+            }
+
+            function updateProgressIndicators(stepNum) {
+                // Update icons/labels
+                for(let i=1; i<=3; i++) {
+                    const stepInd = document.getElementById(`step-ind-${i}`);
+                    const stepIcon = document.getElementById(`step-icon-${i}`);
+                    
+                    stepInd.classList.remove('active', 'completed');
+                    stepIcon.innerHTML = i; // Reset text
+
+                    if (i < stepNum) {
+                        stepInd.classList.add('completed');
+                        stepIcon.innerHTML = '<i class="fas fa-check"></i>'; // Show check
+                    } else if (i === stepNum) {
+                        stepInd.classList.add('active');
+                    }
+                }
+
+                // Update progress lines
+                for(let i=1; i<=2; i++) {
+                    const line = document.getElementById(`step-line-${i}`);
+                    line.classList.remove('filled');
+                    if (i < stepNum) {
+                        line.classList.add('filled');
+                    }
+                }
+            }
+
+            nextBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const currentStep = parseInt(this.getAttribute('data-next')) - 1;
+                    
+                    // Validate current step before moving
+                    if (currentStep === 1) {
+                        if (!hiddenTreatmentSelect.value) {
+                            treatmentFeedback.classList.remove('d-none');
+                            // Add shake effect to card
+                            document.querySelector('.booking-card').classList.add('shake');
+                            setTimeout(() => document.querySelector('.booking-card').classList.remove('shake'), 500);
+                            return;
+                        }
+                        treatmentFeedback.classList.add('d-none');
+                    } else if (currentStep === 2) {
+                        let valid = true;
+                        if (timeSlotAlert) timeSlotAlert.style.display = 'none';
+
+                        if (!dateInput.value) {
+                            dateInput.classList.add('is-invalid');
+                            valid = false;
+                        } else {
+                            // Extra safety check for Wednesdays
+                            const selDate = parseLocalDate(dateInput.value);
+                            if (selDate.getDay() === 3) {
+                                handleDateSelection(dateInput.value); // Trigger blocker
+                                valid = false;
+                            } else {
+                                dateInput.classList.remove('is-invalid');
+                            }
+                        }
+                        
+                        if (!hiddenTimeInput.value) {
+                            timeSlotFeedback.classList.remove('d-none');
+                            valid = false;
+                        } else {
+                            timeSlotFeedback.classList.add('d-none');
+                        }
+
+                        if (!valid) {
+                            document.querySelector('.booking-card').classList.add('shake');
+                            setTimeout(() => document.querySelector('.booking-card').classList.remove('shake'), 500);
+                            return;
+                        }
+                    }
+
+                    goToStep(currentStep + 1);
+                });
+            });
+
+            backBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const backStep = parseInt(this.getAttribute('data-back'));
+                    goToStep(backStep);
+                });
+            });
+
+            // Treatment Card Grid Selection
+            const treatmentCards = document.querySelectorAll('.treatment-card-option');
+            treatmentCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    // Update classes
+                    treatmentCards.forEach(c => c.classList.remove('selected'));
+                    this.classList.add('selected');
+                    
+                    // Update hidden native select value
+                    const val = this.getAttribute('data-val');
+                    hiddenTreatmentSelect.value = val;
+                    treatmentFeedback.classList.add('d-none');
+
+                    // Customize details placeholder / prompt based on selection
+                    const symptomsTextarea = document.getElementById('symptoms');
+                    if (symptomsTextarea) {
+                        if (val === 'Other / Consultation') {
+                            symptomsTextarea.placeholder = currentLanguage === 'en' ? "Please describe your treatment request, dental concern, or general inquiry in detail..." : "कृपया अपने उपचार अनुरोध, दंत समस्या या सामान्य पूछताछ का विस्तार से वर्णन करें...";
+                        } else {
+                            symptomsTextarea.placeholder = currentLanguage === 'en' ? "Describe any dental problems or pain..." : "किसी भी दंत समस्या या दर्द का वर्णन करें...";
+                        }
+                    }
+
+                    // Smooth Auto-proceed to Step 2 after 400ms selection feedback
+                    setTimeout(() => {
+                        goToStep(2);
+                    }, 400);
+                });
+            });
+
+            // Pre-select service & symptoms from URL parameter (e.g. ?service=rct&symptoms=toothache)
+            const urlParams = new URLSearchParams(window.location.search);
+            const serviceParam = urlParams.get('service');
+            if (serviceParam) {
+                const slugs = {
+                    'general': 'General Dentistry',
+                    'rct': 'Root Canal Treatment',
+                    'implants': 'Dental Implants',
+                    'whitening': 'Teeth Whitening',
+                    'crowns': 'Crowns & Bridges',
+                    'pediatric': 'Pediatric Dentistry',
+                    'braces': 'Orthodontics',
+                    'gum': 'Gum Treatment',
+                    'extraction': 'Tooth Extraction',
+                    'other': 'Other / Consultation'
+                };
+                
+                const matchedVal = slugs[serviceParam.toLowerCase()];
+                if (matchedVal) {
+                    // Trigger click on corresponding card option
+                    const targetCard = Array.from(treatmentCards).find(card => card.getAttribute('data-val') === matchedVal);
+                    if (targetCard) {
+                        targetCard.click();
+                    }
+                }
+            }
+
+            const symptomsParam = urlParams.get('symptoms');
+            if (symptomsParam) {
+                const symptomsTextarea = document.getElementById('symptoms');
+                if (symptomsTextarea) {
+                    symptomsTextarea.value = symptomsParam;
+                }
+            }
+
+            // Custom Time Slot Selection Logic
+            const timeSlotBtns = document.querySelectorAll('.time-slot-btn');
+            timeSlotBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    // Check if date is selected
+                    if (!dateInput.value) {
+                        // User forgot the date! Show error and clear selection
+                        timeSlotBtns.forEach(b => b.classList.remove('selected'));
+                        hiddenTimeInput.value = '';
+                        
+                        // Show warning alert
+                        if (timeSlotAlert) {
+                            timeSlotAlert.style.display = 'flex';
+                            
+                            // Highlight date field
+                            dateInput.classList.add('is-invalid');
+                            
+                            // Shake the date picker wrapper
+                            const dateWrapper = document.querySelector('.date-picker-wrapper');
+                            if (dateWrapper) {
+                                dateWrapper.classList.add('shake');
+                                setTimeout(() => dateWrapper.classList.remove('shake'), 500);
+                            }
+                            
+                            // Smooth scroll to date input
+                            const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                            window.scrollTo({
+                                top: dateWrapper.offsetTop - navbarHeight - 30,
+                                behavior: 'smooth'
+                            });
+                        }
+                        return;
+                    }
+
+                    // Date is present! Select the slot normally
+                    timeSlotBtns.forEach(b => b.classList.remove('selected'));
+                    this.classList.add('selected');
+                    const selectedTime = this.getAttribute('data-time');
+                    hiddenTimeInput.value = selectedTime;
+                    timeSlotFeedback.classList.add('d-none');
+                    if (timeSlotAlert) timeSlotAlert.style.display = 'none';
+                });
+            });
+
+            // Form Validation & Submission Logic
+            const form = document.getElementById('appointmentForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const submitBtnText = document.getElementById('submitBtnText');
+
+            form.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                // Final Step 3 Native Verification
+                if (!form.checkValidity()) {
+                    e.stopPropagation();
+                    form.classList.add('was-validated');
+                    document.querySelector('.booking-card').classList.add('shake');
+                    setTimeout(() => document.querySelector('.booking-card').classList.remove('shake'), 500);
+                    return;
+                }
+
+                // Gather form data
+                const formData = new FormData(form);
+                const dataObj = {};
+                formData.forEach((value, key) => { dataObj[key] = value; });
+
+                // Enter Loading State
+                submitBtn.disabled = true;
+                const spinner = document.createElement('span');
+                spinner.className = 'spinner-border spinner-border-sm me-2';
+                spinner.setAttribute('role', 'status');
+                submitBtn.prepend(spinner);
+                
+                const currentLang = document.body.getAttribute('data-lang') || 'en';
+                submitBtnText.textContent = currentLang === 'en' ? 'Processing...' : 'प्रक्रिया जारी है...';
+
+                const accessKey = formData.get('access_key');
+
+                // Simulate submission if access key is placeholder
+                if (accessKey === 'YOUR_ACCESS_KEY_HERE') {
+                    setTimeout(() => {
+                        spinner.remove();
+                        showSuccessScreen(dataObj);
+                    }, 1200);
+                    return;
+                }
+
+                // Actual API Post
+                try {
+                    const response = await fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify(dataObj)
+                    });
+
+                    const result = await response.json();
+                    
+                    if (response.status === 200 || result.success) {
+                        showSuccessScreen(dataObj);
+                    } else {
+                        throw new Error(result.message || 'Submission failed');
+                    }
+                } catch (error) {
+                    console.error("Booking submission error:", error);
+                    alert(currentLang === 'en' ? 'Submission failed: ' + error.message : 'सबमिशन विफल रहा: ' + error.message);
+                } finally {
+                    spinner.remove();
+                    submitBtn.disabled = false;
+                    submitBtnText.textContent = currentLang === 'en' ? 'Confirm Appointment' : 'अपॉइंटमेंट की पुष्टि करें';
+                }
+            });
+
+            // Display Success State card
+            function showSuccessScreen(data) {
+                const wrapper = document.getElementById('bookingFormWrapper');
+                const title = document.querySelector('.booking-title');
+                const subtitle = document.querySelector('.booking-subtitle');
+                const progressIndicator = document.querySelector('.step-progress-bar');
+                const currentLang = document.body.getAttribute('data-lang') || 'en';
+
+                // Hide steps progress tracker
+                if (progressIndicator) progressIndicator.style.display = 'none';
+
+                // Format Date
+                const dateParts = data.date.split('-');
+                const formattedDate = `${dateParts[2]}/${dateParts[1]}/${dateParts[0]}`;
+
+                // Set headers to success state
+                title.textContent = currentLang === 'en' ? 'Appointment Requested!' : 'अपॉइंटमेंट का अनुरोध प्राप्त हुआ!';
+                title.style.background = 'linear-gradient(135deg, var(--accent) 30%, #34d399)';
+                title.style.webkitBackgroundClip = 'text';
+                
+                subtitle.textContent = currentLang === 'en' 
+                    ? 'Thank you! We have received your booking and will verify your slots shortly.' 
+                    : 'धन्यवाद! हमें आपका बुकिंग अनुरोध मिल गया है और हम जल्द ही इसकी पुष्टि करेंगे।';
+
+                // WhatsApp message prep
+                const dayMsg = data.day_of_week ? ` (${data.day_of_week})` : '';
+                const waMessage = encodeURIComponent(`Hello Dr. A Gupta, I just booked a dental appointment through the website.\n\nDetails:\n- Name: ${data.name}\n- Service: ${data.treatment}\n- Date: ${formattedDate}${dayMsg}\n- Time: ${data.time}\n\nPlease confirm my slot.`);
+                const waUrl = `https://wa.me/919984847807?text=${waMessage}`;
+
+                const dayOfBooking = data.day_of_week ? `, ${data.day_of_week}` : '';
+
+                wrapper.innerHTML = `
+                    <div class="success-card" data-aos="zoom-in">
+                        <div class="success-icon-wrap">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <h4 class="fw-bold mb-2" data-en="Slot Requested Successfully!" data-hi="स्लॉट का अनुरोध सफलतापूर्वक किया गया!">Slot Requested Successfully!</h4>
+                        <p class="text-muted small" data-en="A summary of your slot request is shown below. Send a WhatsApp message to confirm instantly." data-hi="आपके अनुरोध का विवरण नीचे दिया गया है। तुरंत पुष्टि के लिए व्हाट्सएप संदेश भेजें।">A summary of your slot request is shown below. Send a WhatsApp message to confirm instantly.</p>
+                        
+                        <div class="success-summary">
+                            <div class="success-summary-item">
+                                <span class="success-summary-label" data-en="Patient Name:" data-hi="मरीज का नाम:">Patient Name:</span>
+                                <span class="success-summary-val">${data.name}</span>
+                            </div>
+                            <div class="success-summary-item">
+                                <span class="success-summary-label" data-en="Treatment:" data-hi="उपचार:">Treatment:</span>
+                                <span class="success-summary-val">${data.treatment}</span>
+                            </div>
+                            <div class="success-summary-item">
+                                <span class="success-summary-label" data-en="Date & Day:" data-hi="तारीख और दिन:">Date & Day:</span>
+                                <span class="success-summary-val">${formattedDate}${dayOfBooking}</span>
+                            </div>
+                            <div class="success-summary-item">
+                                <span class="success-summary-label" data-en="Requested Time:" data-hi="अनुरोधित समय:">Requested Time:</span>
+                                <span class="success-summary-val">${data.time}</span>
+                            </div>
+                        </div>
+
+                        <div class="d-flex flex-column gap-3">
+                            <a href="${waUrl}" target="_blank" rel="noopener" class="btn btn-success btn-lg py-3 w-100 shadow-sm" style="background:#25D366; border-color:#25D366;">
+                                <i class="fab fa-whatsapp me-2"></i>
+                                <span data-en="Confirm via WhatsApp" data-hi="व्हाट्सएप के जरिए पुष्टि करें">Confirm via WhatsApp</span>
+                            </a>
+                            <a href="../" class="btn btn-outline-primary py-3">
+                                <i class="fas fa-home me-2"></i>
+                                <span data-en="Back to Home" data-hi="मुख्य पृष्ठ पर जाएं">Back to Home</span>
+                            </a>
+                        </div>
+                    </div>
+                `;
+
+                // Scroll to top of card
+                const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                window.scrollTo({
+                    top: document.querySelector('.booking-card').offsetTop - navbarHeight - 20,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    </script>
+    <style>
+        /* Shake Animation for Validation Errors */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-6px); }
+            75% { transform: translateX(6px); }
+        }
+        .shake {
+            animation: shake 0.4s ease-in-out;
+        }
+    </style>
+</body>
+
+</html>

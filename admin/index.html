@@ -1,0 +1,322 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script>
+        // Authentication check
+        if (localStorage.getItem('admin_auth') !== 'true') {
+            window.location.href = '../login/';
+        }
+
+        function logout() {
+            localStorage.removeItem('admin_auth');
+            window.location.href = '../login/';
+        }
+    </script>
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Gupta Dental Care</title>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles.css">
+    <!-- Crypto JS for secure signatures -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <style>
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body.light-mode {
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(0, 0, 0, 0.05);
+        }
+
+        .admin-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .config-section {
+            background: var(--glass-bg);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 1px dashed var(--primary);
+        }
+
+        .upload-zone {
+            border: 2px dashed var(--primary);
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: rgba(14, 165, 233, 0.05);
+        }
+
+        .upload-zone:hover {
+            background: rgba(14, 165, 233, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .preview-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            border: 1px solid var(--border-glass);
+        }
+
+        .preview-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .preview-item .remove-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(239, 68, 68, 0.9);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .status-badge {
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            border-radius: 6px;
+            margin-top: 5px;
+            display: inline-block;
+        }
+
+        .status-pending { background: #f59e0b; color: #fff; }
+        .status-uploading { background: #3b82f6; color: #fff; }
+        .status-success { background: #10b981; color: #fff; }
+        .status-error { background: #ef4444; color: #fff; }
+
+        .image-management-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .manage-item {
+            background: var(--bg-surface);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-glass);
+            transition: transform 0.3s ease;
+        }
+
+        .manage-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .manage-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .manage-item .info {
+            padding: 10px;
+        }
+
+        .manage-item .actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-top: 1px solid var(--border-glass);
+        }
+
+        .nav-admin {
+            margin-top: 100px;
+        }
+        
+        #cloudinaryConfigForm .form-control {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-glass);
+            color: var(--text-main);
+            border-radius: 10px;
+            padding: 12px;
+        }
+        
+        body.light-mode #cloudinaryConfigForm .form-control {
+            background: #fff;
+            color: #333;
+        }
+
+        .instructions-alert {
+            background: rgba(14, 165, 233, 0.1);
+            border-left: 4px solid var(--primary);
+            color: var(--text-main);
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="../">
+                <img src="../logo.png" alt="Logo" style="height: 40px;">
+                <span class="ms-2 fw-bold">Admin Panel</span>
+            </a>
+            <div class="ms-auto d-flex align-items-center">
+                <button class="btn btn-outline-info btn-sm me-2 d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#configCollapse" title="Settings">
+                    <i class="fas fa-cog"></i>
+                </button>
+                <button class="btn btn-outline-light btn-sm me-2" onclick="toggleBackgroundMode()" title="Toggle Theme">
+                    <i class="fas fa-moon"></i><span id="bg-mode-text" class="ms-1 d-none d-sm-inline">Light Mode</span>
+                </button>
+                <a href="../gallery/" class="btn btn-primary btn-sm me-2" title="View Gallery"><i class="fas fa-images"></i><span class="ms-1 d-none d-sm-inline">Gallery</span></a>
+                <button onclick="logout()" class="btn btn-outline-danger btn-sm" title="Logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container nav-admin">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="text-center mb-5">
+                    <h1 class="display-5 fw-bold">Gallery Administration</h1>
+                    <p class="text-muted">Upload and manage clinic images via Cloudinary</p>
+                    <div class="title-border mx-auto"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Configuration Column -->
+            <div class="col-md-4 collapse d-md-block" id="configCollapse">
+                <div class="admin-card">
+                    <h4 class="mb-4"><i class="fas fa-cog me-2"></i> Cloudinary Setup</h4>
+                    <form id="cloudinaryConfigForm">
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Cloud Name</label>
+                            <input type="text" id="cloudName" class="form-control" placeholder="e.g. dxyz123" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Upload Preset (Unsigned)</label>
+                            <input type="text" id="uploadPreset" class="form-control" placeholder="e.g. ml_default" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold text-warning"><i class="fas fa-key me-1"></i> API Key (Required for Delete)</label>
+                            <input type="text" id="apiKey" class="form-control" placeholder="Found in your dashboard">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold text-danger"><i class="fas fa-user-secret me-1"></i> API Secret (Required for Delete)</label>
+                            <input type="password" id="apiSecret" class="form-control" placeholder="Keep this private!">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Gallery Tag</label>
+                            <input type="text" id="galleryTag" class="form-control" value="gupta_dental_gallery" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="fas fa-save me-2"></i> Save Settings
+                        </button>
+                    </form>
+                    
+                    <div class="mt-4 instructions-alert">
+                       <p class="mb-2"><strong><i class="fas fa-info-circle"></i> Setup Instructions:</strong></p>
+                       <ol class="ps-3 mb-0 small">
+                           <li>Go to Cloudinary Settings > Enable <strong>Unsigned Uploads</strong>.</li>
+                           <li>Create an <strong>Upload Preset</strong> and set it to <strong>Unsigned</strong>.</li>
+                           <li>In Settings > Security > <strong>Restricted Media Types</strong>, uncheck <strong>Resource List</strong> to allow listing images.</li>
+                       </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upload Column -->
+            <div class="col-md-8">
+                <!-- Upload Section -->
+                <div class="admin-card">
+                    <h4 class="mb-4"><i class="fas fa-cloud-upload-alt me-2"></i> Upload New Images</h4>
+                    <div class="upload-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
+                        <i class="fas fa-images fa-3x mb-3 text-primary"></i>
+                        <h5>Click or Drag & Drop Images Here</h5>
+                        <p class="text-muted small">Supports JPG, PNG, WEBP (Max 10MB per image)</p>
+                        <input type="file" id="fileInput" multiple accept="image/*" class="d-none">
+                    </div>
+
+                    <div id="uploadList" class="preview-grid">
+                        <!-- Preview items will appear here -->
+                    </div>
+
+                    <div id="uploadActions" class="mt-4 d-none">
+                        <button onclick="startUpload()" class="btn btn-success btn-lg">
+                            <i class="fas fa-play me-2"></i> Start Uploading
+                        </button>
+                        <button onclick="clearUploads()" class="btn btn-outline-secondary btn-lg ms-2">
+                            Clear All
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Existing Images Management -->
+                <div class="admin-card">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h4><i class="fas fa-layer-group me-2"></i> Manage Online Gallery</h4>
+                        <button onclick="refreshGallery()" class="btn btn-sm btn-outline-primary">
+                            <i class="fas fa-sync-alt me-1"></i> Refresh
+                        </button>
+                    </div>
+                    
+                    <div id="galleryManagementList" class="image-management-grid">
+                        <div class="text-center py-5 w-100">
+                            <i class="fas fa-spinner fa-spin fa-2x text-muted mb-3"></i>
+                            <p>Loading your online gallery...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0 small text-white-50">&copy; 2026 Gupta Dental Care Admin Portal</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../admin.js"></script>
+</body>
+
+</html>
