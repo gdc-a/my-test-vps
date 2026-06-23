@@ -1872,9 +1872,12 @@
             if (preloadPercent) preloadPercent.textContent = percent + '%';
             if (preloadBar) preloadBar.style.width = percent + '%';
 
-            if (loadedCount >= frameCount && !preloaderComplete) {
+            // Non-blocking load: reveal the landing page as soon as the first 15 frames are loaded.
+            // The remaining frames will load asynchronously in the background.
+            const initialFramesNeeded = 15;
+            if (loadedCount >= initialFramesNeeded && !preloaderComplete) {
                 preloaderComplete = true;
-                setTimeout(initWebsite, 600); // Smooth buffer for preloader completion
+                setTimeout(initWebsite, 200); // Quick transition
             }
         }
 

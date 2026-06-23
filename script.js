@@ -432,7 +432,9 @@ if (callBtn) {
 if ('loading' in HTMLImageElement.prototype) {
     const images = document.querySelectorAll('img[loading="lazy"]');
     images.forEach(img => {
-        img.src = img.dataset.src;
+        if (img.dataset.src) {
+            img.src = img.dataset.src;
+        }
     });
 } else {
     // Fallback for browsers that don't support lazy loading

@@ -38,11 +38,17 @@ function initLogin(loginForm) {
         const email = document.getElementById('email').value.trim();
         const password = document.getElementById('password').value;
         
-        // Base64 encoded credentials for basic security obfuscation
-        const validEmailsEnc = ['Z3VwdGFkZW50YWxjYXJlMDFAZ21haWwuY29t', 'YWd1cHRhMzgxNjBAZ21haWwuY29t'];
-        const passEnc = 'QWd1cHRhQCMxODQ1';
+        // SHA-256 hashed credentials for administrative login
+        const validEmailsHashes = [
+            'd8d5152dd945f1b631f285f79f146189c53326b00fd85d15b5ab7170c6495945', 
+            '66141117e99b9b7bbaecf7df4ec6885a9a146272448e4563afd336cf9af1ca9c'
+        ];
+        const passHash = '3b18946e35421564897af7ec71a0df1abe5a434c4d648873a49967561c32c239';
         
-        if (validEmailsEnc.includes(btoa(email)) && btoa(password) === passEnc) {
+        const inputEmailHash = CryptoJS.SHA256(email).toString();
+        const inputPassHash = CryptoJS.SHA256(password).toString();
+        
+        if (validEmailsHashes.includes(inputEmailHash) && inputPassHash === passHash) {
             localStorage.setItem('admin_auth', 'true');
             window.location.href = '../admin/';
         } else {
